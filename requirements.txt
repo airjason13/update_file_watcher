@@ -1,0 +1,9 @@
+APScheduler==3.10.4
+EasyFileWatcher==0.0.5
+greenlet==3.0.1
+pytz==2023.3.post1
+six==1.16.0
+SQLAlchemy==2.0.22
+SQLAlchemy-Utils==0.41.1
+typing_extensions==4.8.0
+tzlocal==5.2
