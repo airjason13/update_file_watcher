@@ -2,7 +2,10 @@ import re
 from global_def import *
 
 
-def check_swu_file_name_format(file_name):
+def check_swu_file_name_format(file_name : str):
+    if file_name.startswith("Eduarts") is False:
+        log.debug("file_name Eduarts Error : %s", file_name)
+        return False
     m = []
     try:
         m = re.match(r'(\S+)_(\d+)_(\d+)_(\d+)_(\d+)_(\d+).swu', file_name)
@@ -13,6 +16,27 @@ def check_swu_file_name_format(file_name):
     if m is None:
         log.debug("%s name format not correct", file_name)
         return False
+    log.debug("%s", m.groups())
+
+    try:
+        name = file_name.split(".swu")
+        n = re.split('_', name[0])
+        '''compare year'''
+        if int(n[1]) < 2022 or int(n[1]) > 2123:
+            return False
+        '''compare month'''
+        if int(n[2]) < 1 or int(n[2]) > 12:
+            return False
+        '''compare day'''
+        if int(n[3] < 1) or int(n[3]) > 31:
+            return False
+
+    except Exception as e:
+        log.debug(e)
+        return False
+
+
+    log.debug("n : %s", n)
     log.debug("%s name format correct", file_name)
     return True
 
