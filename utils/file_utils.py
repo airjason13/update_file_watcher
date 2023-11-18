@@ -28,7 +28,7 @@ def check_swu_file_name_format(file_name : str):
         if int(n[2]) < 1 or int(n[2]) > 12:
             return False
         '''compare day'''
-        if int(n[3] < 1) or int(n[3]) > 31:
+        if int(n[3]) < 1 or int(n[3]) > 31:
             return False
 
     except Exception as e:

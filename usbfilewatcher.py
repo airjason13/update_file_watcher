@@ -28,14 +28,17 @@ class UpdateFileWatcher:
             for name in files:
                 if '.swu' in name:
                     if utils.file_utils.check_swu_file_name_format(name):
-                        self.swu_file_list.append(os.path.join(root, name))
-                        # log.debug("file name : %s", name)
-                        # log.debug("os.path.join(root, name) : %s", os.path.join(root, name))
+                        log.debug("os.path.join(root, name) : %s", os.path.join(root, name))
+                        if 'Trash' not in os.path.join(root, name):
+                            self.swu_file_list.append(os.path.join(root, name))
+                            log.debug("file name : %s", name)
+                            log.debug("os.path.join(root, name) : %s", os.path.join(root, name))
 
         log.debug("*******************************************************")
         log.debug("we got")
         for swu_file in self.swu_file_list:
             log.debug("%s", swu_file)
+
         log.debug("in swu file list")
         return len(self.swu_file_list)
 
